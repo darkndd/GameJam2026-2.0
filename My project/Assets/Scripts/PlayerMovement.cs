@@ -9,18 +9,17 @@ public class PlayerMovement : MonoBehaviour
         
     }
 
-    public Vector3 targetPosition;
+    public Vector2 targetPosition;
 	
 	// Update is called once per frame
 	void Update () {
 
 		if(Input.GetKeyDown(KeyCode.Mouse0))
 		   {
-			targetPosition = new Vector3(Camera.main.ScreenToWorldPoint(Input.mousePosition).x, Camera.main.ScreenToWorldPoint(Input.mousePosition).y, 0);
+			targetPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 		}
         
-        if (transform.position != targetPosition)
-		    transform.position = Vector3.MoveTowards(transform.position, targetPosition, Time.deltaTime * 5);
+        transform.position = Vector2.MoveTowards(transform.position, targetPosition, Time.deltaTime * 5);
 	}
 }
 
