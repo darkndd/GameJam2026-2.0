@@ -16,10 +16,11 @@ public class PlayerMovement : MonoBehaviour
 
 		if(Input.GetKeyDown(KeyCode.Mouse0))
 		   {
-			targetPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+			targetPosition = new Vector3(Camera.main.ScreenToWorldPoint(Input.mousePosition).x, Camera.main.ScreenToWorldPoint(Input.mousePosition).y, 0);
 		}
-
-		transform.position = Vector3.MoveTowards(transform.position, targetPosition, Time.deltaTime * 5);
+        
+        if (transform.position != targetPosition)
+		    transform.position = Vector3.MoveTowards(transform.position, targetPosition, Time.deltaTime * 5);
 	}
 }
 
