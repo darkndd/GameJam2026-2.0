@@ -1,0 +1,14 @@
+{
+    "dialog1": 
+        {"lines" : 
+            ["Dialogo 1 - Linea 1", "Dialogo 1 - Linea 2", "Dialogo 1 - Linea 3"],
+        "opciones" :
+            ["Opcion 1", "Opcion 2", "Opcion 3"]
+        }, 
+    "dialog2": 
+        {"lines" : 
+            ["Dialogo 2 - Linea 1"], 
+        "opciones" : 
+            ["Opcion A", "Opcion B", "Opcion C"]
+        }
+}
