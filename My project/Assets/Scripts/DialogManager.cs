@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class DialogData
 {
     public List<string> lines;
-    public List<string> opciones;
+    public List<Opcion> opciones;
 }
 
 [System.Serializable]
