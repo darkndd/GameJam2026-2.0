@@ -3,12 +3,40 @@
         {"lines" : 
             ["Dialogo 1 - Linea 1", "Dialogo 1 - Linea 2", "Dialogo 1 - Linea 3"],
         "opciones" :
-            ["Opcion 1", "Opcion 2", "Opcion 3"]
-        }, 
+            [ 
+                {"text" : "Opcion 1", "nextDialog" : "dialog2"}, 
+                {"text" : "Opcion 2", "nextDialog" : "dialog2"}, 
+                {"text" : "Opcion 3", "nextDialog" : "dialog2"}
+            ]
+        },
     "dialog2": 
         {"lines" : 
-            ["Dialogo 2 - Linea 1"], 
+            ["Has elegido la opcion 1 - Linea 1 \n Este dialogo es mas largo \n Se ve bien?", "Has elegido la opcion 1 - Linea 2"], 
         "opciones" : 
-            ["Opcion A", "Opcion B", "Opcion C"]
+            [
+                {"text" : "Opcion A", "nextDialog" : null}, 
+                {"text" : "Opcion B", "nextDialog" : null}, 
+                {"text" : "Opcion C", "nextDialog" : null}
+            ]
+        },
+    "dialog3": 
+        {"lines" : 
+            ["Has elegido la opcion 2 - Linea 1", "Has elegido la opcion 2 - Linea 2"],
+        "opciones" : 
+            [
+                {"text" : "Opcion X", "nextDialog" : null}, 
+                {"text" : "Opcion Y", "nextDialog" : null}, 
+                {"text" : "Opcion Z", "nextDialog" : null}
+            ]
+        },
+    "dialog4": 
+        {"lines" : 
+            ["Has elegido la opcion 3 - Linea 1"],
+        "opciones" : 
+            [
+                {"text" : "Opcion L", "nextDialog" : null}, 
+                {"text" : "Opcion M", "nextDialog" : null}, 
+                {"text" : "Opcion N", "nextDialog" : null}
+            ]
         }
 }
