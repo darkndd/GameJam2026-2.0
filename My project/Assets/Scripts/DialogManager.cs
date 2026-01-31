@@ -25,6 +25,12 @@ public class DialogEntry
     public DialogData value;
 }
 
+public class Opcion 
+{
+    public string text;
+    public string nextDialog;
+}
+
 public class DialogManager : MonoBehaviour
 {
     [SerializeField] public TextAsset dialogJsonFile;
@@ -106,13 +112,23 @@ public class DialogManager : MonoBehaviour
         // Si se acabaron las líneas, mostrar opciones de dialogo
         if (indexLineaActual >= dialog.lines.Count)
         {
-            DisplayOpciones(dialog.opciones);
+            List<Opcion> opcionesList = new List<Opcion>();
+
+            for(int i = 0; i < dialog.opciones.Count; i++)
+            {
+                Opcion opcion = new Opcion();
+                opcion.text = dialog.opciones[i].text;
+                opcion.nextDialog = dialog.opciones[i].nextDialog;
+                opcionesList.Add(opcion);
+            }
+
+            DisplayOpciones(opcionesList);
             indexLineaActual = 0;
             continuarButton.gameObject.SetActive(false);
         }
     }
 
-    private void DisplayOpciones(List<string> opciones)
+    private void DisplayOpciones(List<Opcion> opciones)
     {
         foreach (Transform child in opcionesContainer)
             Destroy(child.gameObject);
@@ -139,15 +155,12 @@ public class DialogManager : MonoBehaviour
             buttonText.enabled = true;
             if (buttonText != null)
             {
-                buttonText.text = opciones[i];
+                buttonText.text = opciones[i].text;
                 buttonText.color = Color.white;
+
+                newButton.onClick.RemoveAllListeners();
+                newButton.onClick.AddListener(() => DisplayDialog(opciones[i].nextDialog));
             }
-
-            Debug.Log($"Botón {i} creado, pos={rt.anchoredPosition}, size={rt.sizeDelta}, scale={rt.localScale}");
-
-            int index = i;
-            string opcionLocal = opciones[i]; // evitar closure raro
-            newButton.onClick.AddListener(() => OnOpcionSelected(index, opcionLocal));
         }
     }
 
